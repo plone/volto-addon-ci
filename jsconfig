@@ -1,0 +1,15 @@
+const fs = require('fs');
+
+const setup = function (name, path) {
+    const jsconfig = JSON.parse(fs.readFileSync("jsconfig.json"));
+    jsconfig.compilerOptions.paths[name] = [path];
+    fs.writeFileSync("jsconfig.json", JSON.stringify(jsconfig, null, 4));
+};
+
+name = process.argv.slice(2)[0];
+path = process.argv.slice(2)[1];
+
+if(! (name && path)) {
+    console.error("Usage node /jsconfig name path")
+}
+setup(name, path)
