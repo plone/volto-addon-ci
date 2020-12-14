@@ -59,14 +59,14 @@ if [ ! -d "/opt/frontend/my-volto-project/src/addons/$GIT_NAME" ]; then
   cd /opt/frontend/my-volto-project/
 fi
 
-sed -i "s#\$GIT_NAME#$GIT_NAME#g" jest.config.js
 node /jsconfig $PACKAGE addons/$GIT_NAME/src
+cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js /opt/frontend/my-volto-project/.
 
 yarn
 
 if [[ "$1" == "test"* ]]; then
   yarn add -W --dev jest-junit jest-transform-stub
-  exec bash -c "set -o pipefail; ./node_modules/jest/bin/jest.js --env=jsdom --passWithNoTests src/addons/$GIT_NAME --watchAll=false --reporters=default --reporters=jest-junit --collectCoverage --coverageReporters lcov cobertura text 2>&1 | tee -a unit_tests_log.txt"
+  exec bash -c "set -o pipefail; RAZZLE_JEST_CONFIG=jest-addon.config.js yarn test src/addons/$GIT_NAME --watchAll=false --reporters=default --reporters=jest-junit --collectCoverage --coverageReporters lcov cobertura text 2>&1 | tee -a unit_tests_log.txt"
 fi
 
 if [[ "$1" == "eslint"* ]]; then
