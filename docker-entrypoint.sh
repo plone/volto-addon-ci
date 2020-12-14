@@ -60,7 +60,9 @@ if [ ! -d "/opt/frontend/my-volto-project/src/addons/$GIT_NAME" ]; then
 fi
 
 node /jsconfig $PACKAGE addons/$GIT_NAME/src
-cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js /opt/frontend/my-volto-project/.
+if [ ! -d "/opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js" ]; then
+  cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js /opt/frontend/my-volto-project/.
+fi
 
 yarn
 
