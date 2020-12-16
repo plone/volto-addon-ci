@@ -44,6 +44,10 @@ if [ ! -z "$DEPENDENCIES" ]; then
   done
 fi
 
+if [ -z "$RAZZLE_JEST_CONFIG" ]; then
+  RAZZLE_JEST_CONFIG="jest-addon.config.js"
+fi
+
 cd /opt/frontend/my-volto-project
 yo --force --no-insight @plone/volto --no-interactive --skip-install $WORKSPACES $ADDONS
 
@@ -61,7 +65,7 @@ fi
 
 node /jsconfig $PACKAGE addons/$GIT_NAME/src
 
-if [ ! -d "/opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js" ]; then
+if [ -f "/opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js" ]; then
   cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js /opt/frontend/my-volto-project/.
 fi
 
@@ -69,7 +73,7 @@ yarn
 
 if [[ "$1" == "test"* ]]; then
   yarn add -W --dev jest-junit jest-transform-stub
-  exec bash -c "set -o pipefail; RAZZLE_JEST_CONFIG=jest-addon.config.js yarn test src/addons/$GIT_NAME --watchAll=false --reporters=default --reporters=jest-junit --collectCoverage --coverageReporters lcov cobertura text 2>&1 | tee -a unit_tests_log.txt"
+  exec bash -c "set -o pipefail; yarn test src/addons/$GIT_NAME --watchAll=false --reporters=default --reporters=jest-junit --collectCoverage --coverageReporters lcov cobertura text 2>&1 | tee -a unit_tests_log.txt"
 fi
 
 if [[ "$1" == "eslint"* ]]; then
