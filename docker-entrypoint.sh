@@ -73,7 +73,7 @@ yarn
 
 if [[ "$1" == "test"* ]]; then
   yarn add -W --dev jest-junit jest-transform-stub
-  exec bash -c "set -o pipefail; yarn test src/addons/$GIT_NAME --watchAll=false --reporters=default --reporters=jest-junit --collectCoverage --coverageReporters lcov cobertura text 2>&1 | tee -a unit_tests_log.txt"
+  exec bash -c "set -o pipefail; RAZZLE_JEST_CONFIG=$RAZZLE_JEST_CONFIG yarn test src/addons/$GIT_NAME --watchAll=false --reporters=default --reporters=jest-junit --collectCoverage --coverageReporters lcov cobertura text 2>&1 | tee -a unit_tests_log.txt"
 fi
 
 if [[ "$1" == "eslint"* ]]; then

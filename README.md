@@ -1,5 +1,7 @@
 # Testing Volto Add-ons Docker Image
 
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/plone/volto-addon-ci)
+
 Docker Image optimized for running tests over Volto Add-ons
 
 ## Supported tags and respective Dockerfile links
