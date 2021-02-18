@@ -49,7 +49,7 @@ if [ -z "$RAZZLE_JEST_CONFIG" ]; then
 fi
 
 cd /opt/frontend/my-volto-project
-yo --force --no-insight @plone/volto --no-interactive --skip-install $WORKSPACES $ADDONS
+yo --force --no-insight @plone/volto --volto=$VOLTO --no-interactive --skip-install $WORKSPACES $ADDONS
 
 if [ ! -d "/opt/frontend/my-volto-project/src/addons/$GIT_NAME" ]; then
   cd /opt/frontend/my-volto-project/src/addons/

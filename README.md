@@ -46,6 +46,7 @@ Docker Image optimized for running tests over Volto Add-ons
 
 ## Supported environment variables
 
+- `VOLTO` Volto version that the project will use. Default: Latest released version is used.
 - `TIMEOUT` Timeout in ms (e.g.: `TIMEOUT=60000`). Default: `120000`
 - `GIT_NAME` Git repo name (e.g.: `GIT_NAME=volto-group-block`). Required
 - `GIT_URL` Git repo root url (e.g.: `GIT_URL=https://gitlab.com`). Default `https://github.com`
