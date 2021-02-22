@@ -18,7 +18,7 @@ RUN yo --no-insight @plone/volto --volto=$VOLTO my-volto-project --no-interactiv
 
 COPY jsconfig docker-entrypoint.sh /
 COPY --chown=node jest-addon.config.js /opt/frontend/my-volto-project/
-COPY --chown=node routes.js config.js /opt/frontend/my-volto-project/src/
+COPY --chown=node routes.js config.js /opt/frontend/
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["test"]

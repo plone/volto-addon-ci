@@ -50,6 +50,8 @@ fi
 
 cd /opt/frontend/my-volto-project
 yo --force --no-insight @plone/volto --volto=$VOLTO --no-interactive --skip-install $WORKSPACES $ADDONS
+mv /opt/frontend/routes.js /opt/frontend/my-volto-project/src/
+mv /opt/frontend/config.js /opt/frontend/my-volto-project/src/
 
 if [ ! -d "/opt/frontend/my-volto-project/src/addons/$GIT_NAME" ]; then
   cd /opt/frontend/my-volto-project/src/addons/
