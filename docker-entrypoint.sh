@@ -92,6 +92,12 @@ if [[ "$1" == "prettier"* ]]; then
 fi
 
 if [[ "$1" == "cypress"* ]]; then
+
+  if [ - f /opt/frontend/my-volto-project/src/addons/$GIT_NAME/babelrc_coverage ]; then
+    cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/babelrc_coverage /opt/frontend/my-volto-project/.babelrc
+    yarn add -W @cypress/code-coverage
+  fi
+  
   RAZZLE_API_PATH=$RAZZLE_API_PATH yarn start &
 
   cd /opt/frontend/my-volto-project/src/addons/$GIT_NAME
