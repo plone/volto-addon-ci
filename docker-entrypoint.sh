@@ -95,10 +95,10 @@ if [[ "$1" == "cypress"* ]]; then
 
   if [ -f /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js ]; then
     cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js /opt/frontend/my-volto-project/babel.config.js
-    sed -i '/\/\* coverage start/d' /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/plugins/index.js
-    sed -i '/coverage end \*\//d' /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/plugins/index.js
-    sed -i '/\/\* coverage start/d' /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/support/index.js
-    sed -i '/coverage end \*\//d' /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/support/index.js
+    sed -i '/\/\*[ ]*coverage[ ]*start/d' /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/plugins/index.js
+    sed -i '/coverage[ ]*end[ ]*\*\//d' /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/plugins/index.js
+    sed -i '/\/\*[ ]*coverage[ ]*start/d' /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/support/index.js
+    sed -i '/coverage[ ]*end[ ]*\*\//d' /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/support/index.js
   fi
   
   RAZZLE_API_PATH=$RAZZLE_API_PATH yarn start &
