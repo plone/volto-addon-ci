@@ -92,10 +92,11 @@ if [[ "$1" == "prettier"* ]]; then
 fi
 
 if [[ "$1" == "cypress"* ]]; then
-
-  if [ -f /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babelrc ]; then
-    cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babelrc /opt/frontend/my-volto-project/.babelrc
-    yarn add -W @cypress/code-coverage
+  
+  if [ -f /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js ]; then
+    cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js /opt/frontend/my-volto-project/babel.config.js
+    grep -Rl coverage-start /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/\/\*[ ]*coverage-start/d'
+    grep -Rl coverage-end /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/coverage-end[ ]*\*\//d'
   fi
   
   RAZZLE_API_PATH=$RAZZLE_API_PATH yarn start &
