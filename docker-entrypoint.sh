@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "$TIMEOUT" ]; then
-  TIMEOUT="120000"
+  TIMEOUT="300000"
 fi
 
 if [ -z "$RAZZLE_API_PATH" ]; then
