@@ -5,6 +5,8 @@
 - increase default cypress start project timeout [`#5`](https://github.com/plone/volto-addon-ci/pull/5)
 - Improve cypress code coverage [`#4`](https://github.com/plone/volto-addon-ci/pull/4)
 - Upgrade to node 14, bullseye [`#6`](https://github.com/plone/volto-addon-ci/pull/6)
+- fix CHANGELOG.md links [#7](https://github.com/plone/volto-addon-ci/pull/7)
+
 
 ### [13.0.1](https://github.com/plone/volto-addon-ci/compare/11.1.0...13.0.1)
 
