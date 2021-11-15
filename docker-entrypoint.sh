@@ -69,6 +69,12 @@ if [ -f "/opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.j
   cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js /opt/frontend/my-volto-project/.
 fi
 
+resolutions=$(jq ".resolutions" /opt/frontend/my-volto-project/src/addons/$GIT_NAME/package.json)
+if [ "$resolutions" != "null" ]; then
+  jq ".resolutions = $resolutions" package.json > package.json.res
+  mv package.json.res package.json
+fi
+
 yarn
 
 if [[ "$1" == "test"* ]]; then

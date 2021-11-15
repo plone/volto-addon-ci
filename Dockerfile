@@ -1,6 +1,6 @@
 FROM node:14-bullseye-slim
 
-RUN runDeps="openssl ca-certificates git libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb patch build-essential" \
+RUN runDeps="openssl ca-certificates git libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb patch build-essential jq" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $runDeps \
  && apt-get clean \
