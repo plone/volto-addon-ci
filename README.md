@@ -44,6 +44,24 @@ Docker Image optimized for running tests over Volto Add-ons
                  -e GIT_NAME=volto-slate \
              plone/volto-addon-ci
 
+## Resolutions
+
+Volto add-ons may depend on other JS libraries and/or other Volto add-ons. In order to
+enforce specific versions, you can use [selective dependency resolutions](https://classic.yarnpkg.com/lang/en/docs/selective-version-resolutions/) within your add-on.
+
+### Troubleshooting
+
+1. Make sure your Volto project `yarn.lock` is not polluted. You can always reset your Volto project `yarn.lock` with:
+
+        $ cd my-volto-project
+        $ rm yarn.lock
+        $ yo @plone/volto --skip-install
+        $ yarn
+
+2. Add-on resolutions don't work with `workspaces`, thus you'll need to define `resolutions` within Volto project.
+
+3. [See also](https://medium.com/swlh/welcome-to-dependency-hell-754a896f0440)
+
 ## Supported environment variables
 
 - `VOLTO` Volto version that the project will use. Default: Latest released version is used.

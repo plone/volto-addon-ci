@@ -2,6 +2,7 @@
 
 ### Unreleased
 
+- Handle add-on resolutions [`8`](https://github.com/plone/volto-addon-ci/pull/8)
 - increase default cypress start project timeout [`#5`](https://github.com/plone/volto-addon-ci/pull/5)
 - Improve cypress code coverage [`#4`](https://github.com/plone/volto-addon-ci/pull/4)
 - Upgrade to node 14, bullseye [`#6`](https://github.com/plone/volto-addon-ci/pull/6)
