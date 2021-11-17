@@ -58,7 +58,7 @@ enforce specific versions, you can use [selective dependency resolutions](https:
         $ yo @plone/volto --skip-install
         $ yarn
 
-2. Add-on resolutions don't work with `workspaces`, thus you'll need to define `resolutions` within Volto project.
+2. Add-on `resolutions` don't work with `workspaces` (development mode), thus you'll need to define `resolutions` within Volto project. To tackle this issue, this Docker image automatically extracts `resolutions` from add-on and add them also to the Volto project before running tests.
 
 3. [See also](https://medium.com/swlh/welcome-to-dependency-hell-754a896f0440)
 
