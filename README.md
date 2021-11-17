@@ -53,9 +53,10 @@ enforce specific versions, you can use [selective dependency resolutions](https:
 
 1. Make sure your Volto project `yarn.lock` is not polluted. You can always reset your Volto project `yarn.lock` with:
 
+        $ npm install -g @plone/generator-volto
         $ cd my-volto-project
-        $ rm yarn.lock
-        $ yo @plone/volto --skip-install
+        $ yo @plone/volto --skip-install --no-interactive /tmp/new-volto-project
+        $ cp /tmp/new-volto-project/yarn.lock .
         $ yarn
 
 2. Add-on `resolutions` don't work with `workspaces` (development mode), thus you'll need to define `resolutions` within Volto project. To tackle this issue, this Docker image automatically extracts `resolutions` from add-on and add them also to the Volto project before running tests.
