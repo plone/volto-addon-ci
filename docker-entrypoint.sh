@@ -25,6 +25,10 @@ if [ -z "$GIT_USER" ]; then
   GIT_USER="eea"
 fi
 
+if [ -z "$NODE_ENV" ]; then
+  NODE_ENV="test"
+fi
+
 if [ -z "$GIT_NAME" ]; then
   echo "GIT_NAME is required"
   exit 1
@@ -98,17 +102,27 @@ if [[ "$1" == "prettier"* ]]; then
 fi
 
 if [[ "$1" == "cypress"* ]]; then
-  
+
   if [ -f /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js ]; then
     cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js /opt/frontend/my-volto-project/babel.config.js
     grep -Rl coverage-start /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/\/\*[ ]*coverage-start/d'
     grep -Rl coverage-end /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/coverage-end[ ]*\*\//d'
   fi
-  
-  RAZZLE_API_PATH=$RAZZLE_API_PATH yarn start &
 
+  export RAZZLE_API_PATH=$RAZZLE_API_PATH
+  export CYPRESS_API_PATH=$CYPRESS_API_PATH
+  export NODE_ENV=$NODE_ENV
+
+  yarn start &
+  wait-on -t $TIMEOUT http://localhost:3000
   cd /opt/frontend/my-volto-project/src/addons/$GIT_NAME
-  exec bash -c "wait-on -t $TIMEOUT http://localhost:3000 && CYPRESS_API_PATH=$CYPRESS_API_PATH ../../../node_modules/cypress/bin/cypress run"
+
+  # Allow custom cypress params
+  if [ -z "$2" ]; then
+    exec ../../../node_modules/cypress/bin/cypress run
+  else
+    exec "../../../node_modules/cypress/bin/$@"
+  fi
 fi
 
 exec "$@"
