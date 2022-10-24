@@ -109,8 +109,6 @@ if [[ "$1" == "cypress"* ]]; then
 
   if [ -f /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js ]; then
     cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js /opt/frontend/my-volto-project/babel.config.js
-    echo "$(grep -Rl coverage-start /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/\/\*[ ]*coverage-start/d')"
-    echo "$(grep -Rl coverage-end /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/coverage-end[ ]*\*\//d')"
   fi
 
   export RAZZLE_API_PATH=$RAZZLE_API_PATH
