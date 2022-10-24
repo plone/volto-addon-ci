@@ -13,7 +13,7 @@ WORKDIR /opt/frontend/
 RUN npm install -g yo @plone/generator-volto wait-on
 
 USER node
-RUN yo --no-insight @plone/volto my-volto-project --no-interactive
+RUN yo --no-insight @plone/volto my-volto-project --no-interactive --canary
 
 COPY jsconfig docker-entrypoint.sh /
 COPY --chown=node jest-addon.config.js /opt/frontend/my-volto-project/

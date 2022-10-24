@@ -53,7 +53,11 @@ if [ -z "$RAZZLE_JEST_CONFIG" ]; then
 fi
 
 cd /opt/frontend/my-volto-project
-yo --force --no-insight @plone/volto --volto=$VOLTO --no-interactive --skip-install $WORKSPACES $ADDONS
+if [ -z "$VOLTO" ]; then
+  yo --force --no-insight @plone/volto --canary --no-interactive --skip-install $WORKSPACES $ADDONS
+else
+  yo --force --no-insight @plone/volto --volto=$VOLTO --no-interactive --skip-install $WORKSPACES $ADDONS
+fi
 
 if [ ! -d "/opt/frontend/my-volto-project/src/addons/$GIT_NAME" ]; then
   cd /opt/frontend/my-volto-project/src/addons/
@@ -105,8 +109,8 @@ if [[ "$1" == "cypress"* ]]; then
 
   if [ -f /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js ]; then
     cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.coverage.babel.config.js /opt/frontend/my-volto-project/babel.config.js
-    grep -Rl coverage-start /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/\/\*[ ]*coverage-start/d'
-    grep -Rl coverage-end /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/coverage-end[ ]*\*\//d'
+    echo "$(grep -Rl coverage-start /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/\/\*[ ]*coverage-start/d')"
+    echo "$(grep -Rl coverage-end /opt/frontend/my-volto-project/src/addons/$GIT_NAME/cypress/* |  xargs sed -i '/coverage-end[ ]*\*\//d')"
   fi
 
   export RAZZLE_API_PATH=$RAZZLE_API_PATH
