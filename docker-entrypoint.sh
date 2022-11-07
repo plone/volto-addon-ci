@@ -77,6 +77,10 @@ if [ -f "/opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.j
   cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/jest-addon.config.js /opt/frontend/my-volto-project/.
 fi
 
+if [ -f "/opt/frontend/my-volto-project/src/addons/$GIT_NAME/.project.eslintrc.js" ]; then
+  cp /opt/frontend/my-volto-project/src/addons/$GIT_NAME/.project.eslintrc.js /opt/frontend/my-volto-project/.eslintrc.js
+fi
+
 resolutions=$(jq ".resolutions" /opt/frontend/my-volto-project/src/addons/$GIT_NAME/package.json)
 if [ "$resolutions" != "null" ]; then
   jq ".resolutions = $resolutions" package.json > package.json.res
