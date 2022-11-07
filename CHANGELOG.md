@@ -2,6 +2,7 @@
 
 ### Unreleased
 
+- Copy <addon>/.project.eslintrc to <project>/.eslintrc.js [#9](https://github.com/plone/volto-addon-ci/pull/9)
 - Handle add-on resolutions [`8`](https://github.com/plone/volto-addon-ci/pull/8)
 - increase default cypress start project timeout [`#5`](https://github.com/plone/volto-addon-ci/pull/5)
 - Improve cypress code coverage [`#4`](https://github.com/plone/volto-addon-ci/pull/4)
