@@ -10,7 +10,8 @@ RUN mkdir -p /opt/frontend \
  && chown -R node /opt/frontend
 
 WORKDIR /opt/frontend/
-RUN npm install -g yo @plone/generator-volto wait-on
+RUN npm install --no-audit --no-fund -g yo @plone/generator-volto@alpha \
+ && corepack enable
 
 USER node
 RUN yo --no-insight @plone/volto my-volto-project --no-interactive --canary
