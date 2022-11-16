@@ -10,7 +10,7 @@ RUN mkdir -p /opt/frontend \
  && chown -R node /opt/frontend
 
 WORKDIR /opt/frontend/
-RUN npm install --no-audit --no-fund -g yo @plone/generator-volto@alpha \
+RUN npm install --no-audit --no-fund -g yo @plone/generator-volto@alpha wait-on \
  && corepack enable
 
 USER node
