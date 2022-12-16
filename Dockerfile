@@ -14,7 +14,7 @@ RUN npm install --no-audit --no-fund -g yo @plone/generator-volto wait-on \
  && corepack enable
 
 USER node
-RUN yo --no-insight @plone/volto my-volto-project --no-interactive --canary
+RUN yo --no-insight @plone/volto my-volto-project --no-interactive
 
 COPY jsconfig docker-entrypoint.sh /
 COPY --chown=node jest-addon.config.js /opt/frontend/my-volto-project/

@@ -54,7 +54,7 @@ fi
 
 cd /opt/frontend/my-volto-project
 if [ -z "$VOLTO" ]; then
-  yo --force --no-insight @plone/volto --canary --no-interactive --skip-install $WORKSPACES $ADDONS
+  yo --force --no-insight @plone/volto --no-interactive --skip-install $WORKSPACES $ADDONS
 else
   yo --force --no-insight @plone/volto --volto=$VOLTO --no-interactive --skip-install $WORKSPACES $ADDONS
 fi
