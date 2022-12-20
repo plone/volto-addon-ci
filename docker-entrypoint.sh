@@ -87,7 +87,8 @@ if [ "$resolutions" != "null" ]; then
   mv package.json.res package.json
 fi
 
-yarn
+# Allows the yarn.lock file to be changed.
+YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
 
 if [[ "$1" == "test"* ]]; then
   exec bash -c "set -o pipefail; RAZZLE_JEST_CONFIG=$RAZZLE_JEST_CONFIG CI=true yarn test src/addons/$GIT_NAME/src --watchAll=false --reporters=default --reporters=jest-junit --collectCoverage --coverageReporters lcov cobertura text 2>&1 | tee -a unit_tests_log.txt"
