@@ -67,7 +67,7 @@ if [ ! -d "/opt/frontend/my-volto-project/src/addons/$GIT_NAME" ]; then
     GIT_BRANCH=PR-${GIT_CHANGE_ID}
     git fetch origin pull/$GIT_CHANGE_ID/head:$GIT_BRANCH
   fi
-  git switch $GIT_BRANCH
+  git checkout $GIT_BRANCH
   cd /opt/frontend/my-volto-project/
 fi
 
